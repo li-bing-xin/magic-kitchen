@@ -68,7 +68,10 @@ $(document).ready(() => {
 
 function bindEvent() {
     $('.cook').on('click', cook)
-    $('.mask').on('click', hideResult)
+    $('.mask').on('click', e => {
+        if (e.target.className === 'mask')
+            hideResult()
+    })
     $('header div').on('click', function () {
         if (loading) return
         $('header div').removeClass('active')
@@ -121,6 +124,7 @@ function checkAllImgLoaded() {
 
 let loadingAnimateTimer = null
 let count = 0
+
 function cook() {
     if (loading) return
     let content = $('.materials')[0].value
@@ -150,7 +154,7 @@ function cook() {
         loading = true
         $('.loading-txt').show()
         let t = 'AI chef is cooking please sit and wait .'
-        loadingAnimateTimer = setInterval(()=>{
+        loadingAnimateTimer = setInterval(() => {
             count++
             count = count % 5
             $('.loading-txt').text(t + ' .'.repeat(count))
@@ -181,9 +185,14 @@ function cook() {
 }
 
 function showResult(res) {
-    $('.mask').fadeIn()
+    if (res.toLowerCase().includes('sorry')) {
+        alert(res)
+        return
+    }
+    $('.mask').css('display', 'flex')
+    $(document.body).css('overflow', 'hidden')
     setTimeout(() => {
-        $(`.result-${pageIndex}`).css('display', 'flex').addClass('animate__bounceIn')
+        $(`.result-${pageIndex}`).show().addClass('animate__bounceIn')
         insertResText(res)
         setTimeout(() => {
             $('.result').removeClass('animate__bounceIn')
@@ -194,6 +203,7 @@ function showResult(res) {
 function hideResult() {
     $('.mask').fadeOut()
     $('.result').fadeOut()
+    $(document.body).css('overflow', 'unset')
 }
 
 function insertResText(text) {
@@ -232,5 +242,6 @@ function insertResText(text) {
             <div class="text-center d-font">${arr[2].split('\n').map(c => `<div>${c}</div>`).join('')}</div>
         `
     }
-    $('.result .content .dish-name').html(html)
+
+    $('.mask .result  .dish-name').html(html)
 }

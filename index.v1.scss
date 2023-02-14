@@ -66,6 +66,7 @@ $transition: all 0.25s ease;
   overflow: auto;
   height: 100vh;
   min-width: 900px;
+  min-height: 600px;
 
   header {
     max-width: 1280px;
@@ -125,8 +126,8 @@ $transition: all 0.25s ease;
 
   .page {
     max-width: 1050px;
-    height: 100vh;
     width: 90%;
+    height: 100%;
     margin: auto;
     position: relative;
 
@@ -193,7 +194,7 @@ $transition: all 0.25s ease;
         animation: bounce;
       }
 
-      .loading-txt{
+      .loading-txt {
         display: none;
         color: $primary;
         position: absolute;
@@ -310,36 +311,27 @@ $transition: all 0.25s ease;
 
 
       .mask {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         background-color: rgba(0, 0, 0, .3);
         z-index: 100;
         position: fixed;
         left: 0;
         top: 0;
+        overflow-y: auto;
         display: none;
-      }
-
-      .result {
-        //width: 670px;
-        //max-width: 1280px;
-        max-height: 80vh;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100px;
-        //bottom: 0;
-        margin: auto;
-        display: none;
-        z-index: 1000;
-        flex-direction: column;
-        justify-content: center;
         text-align: center;
+        align-items: center;
 
-        .content {
-          //box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+
+        .result {
+          margin: auto;
+          z-index: 1000;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
           position: relative;
-          width: 100%;
+          display: inline-block;
 
           .close {
             position: absolute;
@@ -369,83 +361,93 @@ $transition: all 0.25s ease;
               transform: rotate(-45deg);
             }
           }
+        }
+
+        .dish-name {
+          position: absolute;
+          height: 72%;
+          width: 40%;
+          word-break: break-word;
+          overflow-y: auto;
+          text-align: left;
+          padding-bottom: 10px;
+
+          .t0 {
+            margin-bottom: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            color: $primary;
+            text-align: center;
+          }
+
+          .t1 {
+            font-weight: bold;
+            margin: 12px 0;
+            font-size: 25px;
+            color: $primary;
+            text-align: center;
+          }
+        }
+
+        .result-3 {
+          width: unset;
+          display: none;
+
+          img {
+            display: block;
+            max-height: calc(100vh - 120px);
+            min-height: 400px;
+            max-width: 700px;
+          }
 
           .dish-name {
-            position: absolute;
-            height: 72%;
-            width: 40%;
-            word-break: break-word;
-            overflow-y: auto;
-            text-align: left;
-            padding-bottom: 10px;
+            height: 55% !important;
+            left: 0;
+            right: 0;
+            top: -5% !important;
+            bottom: 0;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+          }
+        }
 
-            .t0 {
-              margin-bottom: 12px;
-              font-size: 24px;
-              font-weight: bold;
-              color: $primary;
-              text-align: center;
-            }
+        .result-2 {
+          width: unset;
+          display: none;
 
-            .t1 {
-              font-weight: bold;
-              margin: 12px 0;
-              font-size: 25px;
-              color: $primary;
-              text-align: center;
-            }
+          img {
+            display: block;
+            max-height: calc(100vh - 120px);
+            min-height: 400px;
+            max-width: 900px;
+          }
+
+          .dish-name {
+            left: 7%;
+            bottom: 5%;
+          }
+        }
+
+        .result-1 {
+          width: unset;
+          display: none;
+
+          .dish-name {
+            right: 5%;
+            bottom: 5%;
           }
 
           img {
-            width: 100%;
             display: block;
+            max-height: 700px;
+            min-height: 400px;
+            max-width: 900px;
           }
-
         }
       }
-
-      .result-1 {
-        width: 670px;
-        .dish-name {
-          right: 5%;
-          bottom: 5%;
-        }
-      }
-
-      .result-2 {
-        width: 800px;
-        .dish-name {
-        left: 7%;
-        bottom: 5%;
-      }
-      }
-
-      .result-3 {
-        width: 600px;
-        img {
-          max-height: 80vh;
-          margin: auto;
-          object-fit: contain;
-        }
-
-        .dish-name {
-          height: 55%!important;
-          left: 0;
-          right: 0;
-          top: -5%!important;
-          bottom: 0;
-          margin: auto;
-          display: flex;
-          align-items: center;
-          text-align: center;
-          flex-direction: column;
-        }
-
-        .close{
-          right: 65px!important;
-        }
-      }
-
     }
   }
 }
@@ -456,6 +458,10 @@ $transition: all 0.25s ease;
 
 .block {
   display: block !important;
+}
+
+.inline-block {
+  display: inline-block !important;
 }
 
 .hidden {
