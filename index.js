@@ -83,7 +83,7 @@ function bindEvent() {
     $('.materials').on('keydown', e => {
         if (e.keyCode === 13) cook()
     })
-    $('.result .close').on('click', e => {
+    $('.result .close').on('click', () => {
         hideResult()
     })
     $(document).on('click', () => {
@@ -98,6 +98,7 @@ function bindEvent() {
 function onDogImgResize() {
     const {offsetHeight, offsetTop} = $('.dogs-bg')[0]
     $('.color-bg').css('height', offsetHeight * .7 + offsetTop - 62 + 'px')
+    $('.bone').css('display', 'block')
 }
 
 function checkAllImgLoaded() {
@@ -118,6 +119,8 @@ function checkAllImgLoaded() {
     }, 0)
 }
 
+let loadingAnimateTimer = null
+let count = 0
 function cook() {
     if (loading) return
     let content = $('.materials')[0].value
@@ -145,6 +148,13 @@ function cook() {
     let k = urlParams.find(c => c[0] === 'k')?.[1]
     if (k) {
         loading = true
+        $('.loading-txt').show()
+        let t = 'AI chef is cooking please sit and wait .'
+        loadingAnimateTimer = setInterval(()=>{
+            count++
+            count = count % 5
+            $('.loading-txt').text(t + ' .'.repeat(count))
+        }, 700)
         fetch('https://api.openai.com/v1/completions', {
             method: 'post',
             body: JSON.stringify(data),
@@ -160,10 +170,12 @@ function cook() {
             let result = res['choices']?.[0]?.text?.trim() || 'none'
             showResult(result)
         }).catch(err => {
-            alert(err)
+            // alert(err)
         }).finally(() => {
             $('.bone').removeClass('animate-bone')
             loading = false
+            $('.loading-txt').hide()
+            clearInterval(loadingAnimateTimer)
         })
     } else alert('Invalid openai key!')
 }

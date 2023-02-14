@@ -114,7 +114,8 @@
           position: absolute;
           top: -24%;
           right: 43%;
-          height: 108%; }
+          height: 108%;
+          display: none; }
         #app .page .main .color-bg .logo {
           border-radius: 50%;
           background-color: #333;
@@ -143,6 +144,15 @@
         max-width: 100%;
         max-height: 100%;
         animation: bounce; }
+      #app .page .main .loading-txt {
+        display: none;
+        color: #533e37;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10%;
+        margin: auto;
+        text-align: center; }
       #app .page .main .dogs-bg-alpha {
         z-index: 99999; }
       #app .page .main .circle {
