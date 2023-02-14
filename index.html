@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Magic Kitchen</title>
+</head>
+<body>
+<div id="app">
+    <div class="loading-mask"></div>
+
+    <div class="page">
+        <header>
+            <div class="active" data-id="1">Fairytale Cuisine</div>
+            <div data-id="2">Rainbow Recipe</div>
+            <div data-id="3">AI Magical Menu</div>
+        </header>
+
+        <div class="main">
+            <img class="dogs-bg" src="./assets/1.png" alt="dogs" draggable="false">
+            <img class="dogs-bg dogs-bg-alpha" src="./assets/1.png" alt="dogs" draggable="false">
+            <!--            <img src="./assets/4.png" class="circle" draggable="false" alt="bone">-->
+
+            <div class="color-bg">
+                <img src="./assets/2(1).png" class="bone" draggable="false" alt="bone">
+                <div class="logo">
+                    MAGIC <br> KITCHEN
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="title info-1">Fairytale Cuisine</div>
+                        <div class="desc info-1">
+                            This app is perfect for kids who love to cook and create their own recipes! With the help of
+                            AI,
+                            this app can generate fun and creative fairytale food names based on the ingredients that
+                            the
+                            user inputs. Kids can get creative and come up with their own recipes, then use the app to
+                            give
+                            their creations a magical name. With this app, kids can make up their own stories and
+                            recipes,
+                            and have a blast in the kitchen!
+                        </div>
+                        <div class="title info-2">Rainbow Recipe</div>
+                        <div class="desc info-2">
+                            This app is perfect for kids who love to cook! With our app, you can easily generate
+                            delicious recipes just by inputting the food name. Our app will provide you with a variety
+                            of recipes that are fun and easy to make. Plus, you can customize the recipes to your own
+                            tastes. So, get cooking and have fun in the kitchen!
+                        </div>
+
+                        <div class="title info-3">AI Magical Menu</div>
+                        <div class="desc info-3">
+                            This app is perfect for kids who want to make dinner fun! With our app, you can easily
+                            generate a dinner menu based on the theme of your choice. Whether you want a Mexican-themed
+                            dinner, a pizza party, or something else, our app will help you come up with a delicious
+                            menu. You can even add your own special touches to make the dinner extra special. So let's
+                            get cooking!
+                        </div>
+
+                        <div class="action">
+
+                            <input type="text" placeholder="Input what you want eat"
+                                   class="materials">
+                            <button class="cook">Magic</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mask">
+
+            </div>
+            <div class="result result-1">
+                <div class="content">
+                    <div class="dish-name">
+                    </div>
+                    <img src="./assets/9.png" alt="">
+                    <div class="close"></div>
+                </div>
+            </div>
+
+            <div class="result result-2">
+                <div class="content">
+                    <div class="dish-name">
+                    </div>
+                    <img src="./assets/8.png" alt="">
+                    <div class="close"></div>
+                </div>
+            </div>
+
+            <div class="result result-3">
+                <div class="content">
+                    <div class="dish-name"></div>
+                    <img src="./assets/18.jpg" alt="">
+                    <div class="close"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jq.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
