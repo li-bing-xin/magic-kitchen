@@ -62,7 +62,7 @@ theme:`
 
 $(document).ready(() => {
     window.addEventListener('resize', onDogImgResize)
-    checkAllImgLoaded()
+    onDogImgResize()
     bindEvent()
 })
 
@@ -83,21 +83,21 @@ function bindEvent() {
     $('.materials').on('keydown', e => {
         if (e.keyCode === 13) cook()
     })
-    $('.result .close').on('click', e=>{
+    $('.result .close').on('click', e => {
         hideResult()
+    })
+    $(document).on('click', () => {
+        let audio = $('audio')[0]
+        if (audio.paused) {
+            checkAllImgLoaded();
+            audio.play()
+        }
     })
 }
 
 function onDogImgResize() {
-    const {offsetWidth, offsetHeight, offsetLeft, offsetTop} = $('.dogs-bg')[0]
-    const offsetPercent = 0.1
-
-    console.log(offsetHeight, 'offsetHeight')
-
+    const {offsetHeight, offsetTop} = $('.dogs-bg')[0]
     $('.color-bg').css('height', offsetHeight * .7 + offsetTop - 62 + 'px')
-
-
-    // document.querySelector('.card').style.cssText += `width: ${offsetWidth * .8 / 2}px; left: ${offsetLeft + offsetWidth * offsetPercent}px; top: ${offsetTop + offsetHeight * offsetPercent}px`
 }
 
 function checkAllImgLoaded() {
