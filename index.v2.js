@@ -101,7 +101,9 @@ function bindEvent() {
 function onDogImgResize() {
     const {offsetHeight, offsetTop} = $('.dogs-bg')[0]
     $('.color-bg').css('height', offsetHeight * .7 + offsetTop - 62 + 'px')
-    $('.bone').css('display', 'block')
+    setTimeout(() => {
+        $('.bone').css('display', 'block')
+    })
 }
 
 function checkAllImgLoaded() {
@@ -135,7 +137,6 @@ function cook() {
         }, 1000)
         return
     }
-    $('.bone').addClass('animate-bone')
 
     let prompt = (pageIndex === 1 ? p1 : pageIndex === 2 ? p2 : p3) + content + '\n'
     const data = {
@@ -152,6 +153,7 @@ function cook() {
     let k = urlParams.find(c => c[0] === 'k')?.[1]
     if (k) {
         loading = true
+        $('.bone').addClass('animate-bone')
         $('.loading-txt').show()
         let t = 'AI chef is cooking please sit and wait .'
         loadingAnimateTimer = setInterval(() => {
